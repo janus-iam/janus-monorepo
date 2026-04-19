@@ -2,6 +2,10 @@
 
 - [x] Put the same fonts in web and landing
 
+- [ ] Blog post to explain how nats have been secured with oidc do soulager trpc
+
+- [ ] Edit the landing page to display "Auth is often a pain in the ass in homelab. So you can use Janus in your homelab for all your services."
+
 - [ ] Create a suite of pages where a user can register themself with mfa enabled by default and mandatory :
 
 There are 8 steps to complete :
