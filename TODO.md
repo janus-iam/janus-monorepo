@@ -220,3 +220,5 @@ def calculate_entropy(password):
     entropy = math.log2(charset_size) * len(password)
     return round(entropy, 2)
 ```
+
+- [ ] Statuate on if we need to build a full stack dashboard side two side or just with keycloak.org/ui-customization/creating-your-own-console
