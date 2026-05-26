@@ -24,7 +24,8 @@ And then make a beautiful "Thank you screen" and goodbye screen.
 
 ## TOTP
 
-Implemented with Keycloak Admin REST API
+A custom Keycloak extension has been developed [here](https://github.com/janus-iam/keycloak-totp-admin-api)
+The connections with this will be coded later
 
 ## Personal questions
 
@@ -102,29 +103,32 @@ At each step show a phrase like :
 
 Use smooth animations for sliding between the steps etc !
 
-- [ ] Add a blog post for all the MFA methods
+You will use zustand to keep track of state etc
 
-- [x] Improve the theme and make it the same for apps/landing/src/routes/blog.$slug.tsx and apps/landing/src/routes/governance.$slug.tsx
+- [ ] Add a blog post for all the MFA methods implemented saying at the bottom "More are coming !"
 
-- [x] Create a dashboard like https://github.com/keycloak/keycloak/tree/main/js/apps/account-ui with all pages for the user to manage they account using https://github.com/keycloak/keycloak/tree/main/js/libs/keycloak-admin-client following [transform.md](./transform.md) in a dedicated branch
+- [x] Improve the blog posts theme and make it the same for apps/landing/src/routes/blog.$slug.tsx and apps/landing/src/routes/governance.$slug.tsx
+
+- [x] Create a dashboard like https://github.com/keycloak/keycloak/tree/main/js/apps/account-ui with all pages for the user to manage they account using https://github.com/keycloak/keycloak/tree/main/js/libs/keycloak-admin-client following [transform.md](./scripts/transform.md) in a dedicated branch
+
+- [ ] Automate keycloak account-ui app monitoring and PR proposals with https://cursor.com/docs/cli/github-actions
 
 - [ ] In the dashboard, add a page where the user can see the metrics related to the user theyself, queried from Clickhouse
 
-- [ ] See if we can disable keycloak user event collections since they are published to NATS via KETE and saved into Clickhouse
+- [ ] See if we can disable keycloak user event collections since they are published to NATS via KETE and saved into Clickhouse ?
 
-- [ ] In one of the page or in a new one, they should be able to manage their profile picture.
-
-- [ ] Add user profile picture using keycloak custom attribute field. However, compare multiuple implementations for this before doing it
+- [ ] Statuate on the use of custom picture :
+      If kept,
+  - [ ] In one of the page or in a new one, they should be able to manage their profile picture.
+  - [ ] Add user profile picture using keycloak custom attribute field. However, compare multiuple implementations for this before doing it
 
 - [ ] Disable keycloak user account ui and password recovery or TOTP recovery
 
 - [ ] Add a email proxy for privacy and anti data-leak like AppleId
 
-- [ ] Plug Better Auth to Keycloak instances for user
+- [x] Plug Better Auth to Keycloak instances for user
 
 - [x] Define governance for the three realms (prod, dev, ops)
-
-- [ ] Automate keycloak account-ui app monitoring and PR proposals with https://cursor.com/docs/cli/github-actions
 
 - [ ] Mark somewhere against what version of keycloak is built the apps/web/src/routes/account pages and edit `scripts/fetch-account-ui.ts` accordingly
 
@@ -142,34 +146,36 @@ Use smooth animations for sliding between the steps etc !
   - [ ] https://ui.aceternity.com/components/gooey-input ?
   - [ ] https://www.chamaac.com/components/sections/how-it-works to explain register flow
 
-- Explore MapCN & https://ui.tripled.work
+- [ ] Explore MapCN & https://ui.tripled.work
 
 - [ ] Create a trpc public procedure for landing page analytics which forward to NATS
 
-- [ ] Create a trpc private procedure for web app analytics which forwards to NATS
+- [ ] Create a trpc private procedure for web app analytics which forwards to NATS or analytics with https://github.com/rybbit-io/rybbit
 
 - [ ] Add NATS event emission in existing TRPC procedures for meaningful analytics
 
-- [ ] Create a batched ingestion service from NATS to Clikhouse -> langage to be chosens
+- [ ] Create a batched ingestion service from NATS to Clikhouse -> TS
 
 - [x] Add to web app dor "what-do-you-need" page https://magicui.design/docs/components/striped-pattern
 
 - [x] Add to web app https://www.cult-ui.com/docs/components/family-button to switch color mode
 
-- [ ] Create a Keycloak extension to implement TOTP lifecycle management admin API endpoints
-      Take inspiration on https://github.com/arisusantolie/keycloak-totp-api-provider and https://deepwiki.com/search/can-i-create-a-java-extension_d6f847f8-6b97-4b5a-b32a-1c56b5986200?mode=fast
+- [x] Create a Keycloak extension to implement TOTP lifecycle management admin API endpoints
+      Take inspiration on https://github.com/arisusantolie/keycloak-totp-api-provider and https://deepwiki.com/search/can-i-create-a-java-extension_d6f847f8-6b97-4b5a-b32a-1c56b5986200?mode=fast -> in progress [here](https://github.com/janus-iam/keycloak-totp-admin-api)
 
 - [ ] Add a Shared Secret Visual Method like https://github.com/teapot-labs/identeapots
+  - [ ] State of the art on existing solutions
+  - [ ] Maybe, create a ultra performant dedicated API for with cache and metrics integration with one endpoint : https://signature.getjanus.eu/v1/${user.attributes.janus_signature_hash}.svg. You will create a workload perf benchmark -> langage to be chosen
 
 - [x] Add a blog post explaining the role of the "Security Signature" Shared Secret Visual and where the passkeys comes in clutch to verify domain name. Open source -> More prone to be cloned and phising tries. Still a security for email to prevent fishing. Version for dev : "deterministic visual anti-phishing identifier" - accessible via une API avec un hash du user id
 
-- [ ] Add `janus_signature_hash` keycloak custom attribute field. Use server app to compute with `HMAC(user_id, server_secret)` and update it with the Keycalok API between `Conditions of use etc Acceptation` and `TOTP` register flow steps
+- [ ] Enhance this blogpost with many examples
 
-- [ ] Create a ultra performant dedicated API for with cache and metrics integration with one endpoint : https://signature.getjanus.eu/v1/${user.attributes.janus_signature_hash}.svg. You will create a workload perf benchmark -> langage to be chosen
+- [ ] Add `janus_signature_hash` keycloak custom attribute field. Use server app to compute with `HMAC(user_id, server_secret)` and update it with the Keycalok API between `Conditions of use etc Acceptation` and `TOTP` register flow steps
 
 - [ ] Generate a new keycloak admin client ?
 
-- [ ] Create a page where user can set up or remove a totp. Keep multi devices support like Keycloak.
+- [ ] Create a page where user can set up or remove a totp in dashboard. Keep multi devices support like Keycloak.
 
 - [x] Write a message in the web app footer using https://vercel.com/docs/environment-variables/system-environment-variables saying :
       "Built against commit …" with a link to the github repo commit.
@@ -178,17 +184,39 @@ Use smooth animations for sliding between the steps etc !
 
 - [ ] Create requiredActions using Terraform
 
-- [ ] Create permanent admin account using terraform ?
+- [ ] Create permanent admin account in master realm using terraform ?
 
 - [ ] Server will listen to NATS
 
-- [ ] Create workers for NATS messaging
+- [ ] Create workers for NATS messaging in TS
 
-- [ ] Connexion check
+- [ ] Connexion check for ?
 
-- [ ] Add OTEL observability to server app
+- [ ] Add OTEL observability to server app with https://github.com/fastify/otel
 
-- [ ] Add skeletons for dashboards
+- [ ] Add skeletons for dashboards loading components
 
 - [ ] Package Janus web, server and ingestion into a helm chart for easy deployment
-- [ ] Extend the dashboard to all possible realms
+
+- [ ] Extend the dashboard to multiple realms (two in our cases)
+
+- [ ] Add a dynamic entropy password calculator in the web app to demontrate the power of words based password
+      with something like :
+
+```py
+def get_charset_size(password):
+    size = 0
+    if re.search(r'[a-z]', password): size += 26
+    if re.search(r'[A-Z]', password): size += 26
+    if re.search(r'[0-9]', password): size += 10
+    if re.search(r'[!@#$%^&*()_+\-=\[\]{};\':\"\\|,.<>\/?`~]', password): size += 32
+    return size
+
+
+def calculate_entropy(password):
+    charset_size = get_charset_size(password)
+    if charset_size == 0:
+        return 0
+    entropy = math.log2(charset_size) * len(password)
+    return round(entropy, 2)
+```
