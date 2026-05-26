@@ -16,7 +16,7 @@ There are 8 steps to complete :
 - Password
 - Conditions of use etc Acceptation
 - TOTP
-- Personal questions
+- Personal questions ? Challenge the purpose of this to only use keycloak ?
 - Seed - Recovery Code - see with https://www.youtube.com/watch?v=fLzrgwAIR7g
 - Explain the viusal security signature while showing it for it for the first time and phishing prevention
 
