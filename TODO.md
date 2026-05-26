@@ -17,7 +17,7 @@ There are 8 steps to complete :
 - Conditions of use etc Acceptation
 - TOTP
 - Personal questions
-- Seed
+- Seed - Recovery Code - see with https://www.youtube.com/watch?v=fLzrgwAIR7g
 - Explain the viusal security signature while showing it for it for the first time and phishing prevention
 
 And then make a beautiful "Thank you screen" and goodbye screen.
