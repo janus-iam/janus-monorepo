@@ -10,7 +10,6 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as RegisterRouteImport } from './routes/register'
-import { Route as LoginRouteImport } from './routes/login'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AccountIndexRouteImport } from './routes/account/index'
@@ -23,11 +22,6 @@ import { Route as AccountAccountSecurityDeviceActivityRouteImport } from './rout
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
   path: '/register',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LoginRoute = LoginRouteImport.update({
-  id: '/login',
-  path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardRoute = DashboardRouteImport.update({
@@ -78,7 +72,6 @@ const AccountAccountSecurityDeviceActivityRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
-  '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/account/applications': typeof AccountApplicationsRoute
   '/account': typeof AccountIndexRoute
@@ -90,7 +83,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
-  '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/account/applications': typeof AccountApplicationsRoute
   '/account': typeof AccountIndexRoute
@@ -103,7 +95,6 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
-  '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/account/applications': typeof AccountApplicationsRoute
   '/account/': typeof AccountIndexRoute
@@ -117,7 +108,6 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/dashboard'
-    | '/login'
     | '/register'
     | '/account/applications'
     | '/account'
@@ -129,7 +119,6 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/dashboard'
-    | '/login'
     | '/register'
     | '/account/applications'
     | '/account'
@@ -141,7 +130,6 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/dashboard'
-    | '/login'
     | '/register'
     | '/account/applications'
     | '/account/'
@@ -154,7 +142,6 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DashboardRoute: typeof DashboardRoute
-  LoginRoute: typeof LoginRoute
   RegisterRoute: typeof RegisterRoute
   AccountApplicationsRoute: typeof AccountApplicationsRoute
   AccountIndexRoute: typeof AccountIndexRoute
@@ -171,13 +158,6 @@ declare module '@tanstack/react-router' {
       path: '/register'
       fullPath: '/register'
       preLoaderRoute: typeof RegisterRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/login': {
-      id: '/login'
-      path: '/login'
-      fullPath: '/login'
-      preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard': {
@@ -242,7 +222,6 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DashboardRoute: DashboardRoute,
-  LoginRoute: LoginRoute,
   RegisterRoute: RegisterRoute,
   AccountApplicationsRoute: AccountApplicationsRoute,
   AccountIndexRoute: AccountIndexRoute,
